@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { DECREASE, INCREASE, REMOVE } from '../actions';
+import { ActionTypes } from '../actions/actionTypes';
 
 const CartItem = ({ qty, img, title, price, remove, increase, decrease }) => {
 	return(
@@ -33,9 +33,9 @@ const mapDispatchToProps = (dispatch, ownprops) => {
 	console.log(ownprops, 'ownprops is in mapDispatchToProps');
 	const { id, qty } = ownprops;
 	return {
-		remove: () => dispatch({ type: REMOVE, payload: { id } }),
-		increase: () => dispatch({ type: INCREASE, payload: {id, qty} }),
-		decrease: () => dispatch({ type: DECREASE, payload: {id, qty} })
+		remove: () => dispatch({ type: ActionTypes.REMOVE, payload: { id } }),
+		increase: () => dispatch({ type: ActionTypes.INCREASE, payload: {id, qty} }),
+		decrease: () => dispatch({ type: ActionTypes.DECREASE, payload: {id, qty} })
 	} 
 }
 

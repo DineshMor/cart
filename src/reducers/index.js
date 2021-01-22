@@ -1,11 +1,11 @@
-import { CLEAR_CART, DECREASE, INCREASE, REMOVE, GET_TOTALS } from '../actions';
+import { ActionTypes } from '../actions/actionTypes';
 
 const Reducer = (state, action) => {
 	switch(action.type){
-		case CLEAR_CART:
+		case ActionTypes.CLEAR_CART:
 			return { ...state, cart: [] };
 
-		case DECREASE:
+		case ActionTypes.DECREASE:
 			let cartArrayDec = [];
 
 			if(action.payload.qty === 1) {
@@ -24,7 +24,7 @@ const Reducer = (state, action) => {
 				cart: cartArrayDec
 			}
 
-		case INCREASE:
+		case ActionTypes.INCREASE:
 			console.log('in increase reducer state', state);
 			const cartArrayInc = state.cart.map( cartItem => {
 				if(cartItem.id === action.payload.id) {
@@ -37,13 +37,13 @@ const Reducer = (state, action) => {
 				cart: cartArrayInc
 				}
 
-		case REMOVE:
+		case ActionTypes.REMOVE:
 			return {
 				...state, 
 				cart: state.cart.filter(cartItem => cartItem.id !== action.payload.id)
 			};
 
-		case GET_TOTALS:
+		case ActionTypes.GET_TOTALS:
 			console.log('get total reducers');
 			const { count, amount } = state.cart.reduce((cartCalc, cartItem) => {
 				const { price, qty } = cartItem;

@@ -2,15 +2,14 @@ import React from "react";
 import { connect } from 'react-redux';
 
 import CartItem from './CartItem';
-import { CLEAR_CART, GET_TOTALS } from '../actions';
-import DropDown from './DropDown';
+import { ActionTypes } from "../actions/actionTypes";
 
 const CartContainer = (props) => {
 console.log(props, 'carcontainer inside props');
   const { cart = [], amount = null, dispatch } = props;
 
   React.useEffect(() => {
-    dispatch({ type: GET_TOTALS })
+    dispatch({ type: ActionTypes.GET_TOTALS })
   });
 
   const CartList = cart.map( item => {
@@ -42,7 +41,7 @@ console.log(props, 'carcontainer inside props');
             </div>
             <button 
               className="btn clear-btn" 
-              onClick={()=> dispatch({ type: CLEAR_CART })}
+              onClick={()=> dispatch({ type: ActionTypes.CLEAR_CART })}
             >
               clear cart
             </button>
