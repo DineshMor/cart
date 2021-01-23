@@ -1,11 +1,10 @@
 import React from "react";
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
 import CartItemsJson from './cart-items';
-import Reducer from './reducers'
+import configureStore from './store/configureStore';
 
 //initial store
 const initialStore = {
@@ -16,7 +15,7 @@ const initialStore = {
 
 const App = () => {
 	return (
-    	<Provider store={createStore(Reducer, initialStore)}>
+    	<Provider store={configureStore(initialStore)}>
       		<Navbar />
       		<CartContainer />
     	</Provider>
